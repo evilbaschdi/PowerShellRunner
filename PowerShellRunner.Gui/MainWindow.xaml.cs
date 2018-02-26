@@ -24,7 +24,7 @@ namespace PowerShellRunner.Gui
             IPowerShellScriptsRaw powerShellScriptsRaw = new PowerShellScriptsRaw(fileListFromPath, scriptPaths);
             IPowerShellScripts powerShellScripts = new PowerShellScripts(powerShellScriptsRaw);
             IExecutePowerShellScript executePowerShellScript = new ExecutePowerShellScript();
-            ITaskbarIconConfiguration taskbarIconConfiguration = new TaskbarIconConfiguration(this, PowerShellRunnerTaskbarIcon, powerShellScripts, executePowerShellScript);
+            ITaskbarIconConfiguration taskbarIconConfiguration = new TaskbarIconConfiguration(this, PowerShellRunnerTaskbarIcon, powerShellScripts, executePowerShellScript, scriptPaths);
             taskbarIconConfiguration.StartMinimized();
             taskbarIconConfiguration.Run();
 

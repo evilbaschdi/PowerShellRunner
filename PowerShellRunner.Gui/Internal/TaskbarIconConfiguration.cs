@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -19,6 +20,7 @@ namespace PowerShellRunner.Gui.Internal
         private readonly TaskbarIcon _taskbarIcon;
         private readonly IPowerShellScripts _powerShellScripts;
         private readonly IExecutePowerShellScript _executePowerShellScript;
+        private readonly IScriptPaths _scriptPaths;
 
         /// <summary>
         /// </summary>
@@ -26,23 +28,22 @@ namespace PowerShellRunner.Gui.Internal
         /// <param name="taskbarIcon"></param>
         /// <param name="powerShellScripts"></param>
         /// <param name="executePowerShellScript"></param>
+        /// <param name="scriptPaths"></param>
         /// <exception cref="ArgumentNullException">
         ///     <paramref name="mainWindow" /> is <see langword="null" />.
         ///     <paramref name="taskbarIcon" /> is <see langword="null" />.
         /// </exception>
-        public TaskbarIconConfiguration(MainWindow mainWindow, TaskbarIcon taskbarIcon, IPowerShellScripts powerShellScripts, IExecutePowerShellScript executePowerShellScript)
+        public TaskbarIconConfiguration(MainWindow mainWindow, TaskbarIcon taskbarIcon, IPowerShellScripts powerShellScripts, IExecutePowerShellScript executePowerShellScript,
+                                        IScriptPaths scriptPaths)
         {
             _mainWindow = mainWindow ?? throw new ArgumentNullException(nameof(mainWindow));
             _taskbarIcon = taskbarIcon ?? throw new ArgumentNullException(nameof(taskbarIcon));
             _powerShellScripts = powerShellScripts ?? throw new ArgumentNullException(nameof(powerShellScripts));
             _executePowerShellScript = executePowerShellScript ?? throw new ArgumentNullException(nameof(executePowerShellScript));
+            _scriptPaths = scriptPaths ?? throw new ArgumentNullException(nameof(scriptPaths));
         }
 
-        /// <summary>
-        ///     Initialisiert eine neue Instanz der <see cref="T:System.Object" />-Klasse.
-        /// </summary>
-        /// <summary>
-        /// </summary>
+
         public void Run()
         {
             var filePath = Assembly.GetEntryAssembly().Location;
@@ -64,64 +65,44 @@ namespace PowerShellRunner.Gui.Internal
         {
             var contextMenu = new ContextMenu();
 
-            var directoryMenuItems = new Dictionary<string, MenuItem>();
-
-            foreach (var fileInfo in _powerShellScripts.Value.OrderBy(x => x.DirectoryName).ThenBy(x => x.Name))
+            foreach (var scriptPath in _scriptPaths.Value)
             {
-                var directory = fileInfo.Directory.GetProperDirectoryCapitalization();
-                var file = fileInfo.GetProperFilePathCapitalization().Replace($"{directory}\\", "", StringComparison.InvariantCultureIgnoreCase);
-
-                var directoryMenuItem = directoryMenuItems.FirstOrDefault(item => item.Key.Equals(directory)).Value
-                                        ?? new MenuItem
-                                           {
-                                               Header = directory,
-                                               Icon = new PackIconMaterial
-                                                      {
-                                                          Kind = PackIconMaterialKind.Folder
-                                                      }
-                                           };
-
-                directoryMenuItems.Where(x => directory.StartsWith(x.Key) && directoryMenuItem.Parent == null).ToList().ForEach(y => y.Value.Items.Add(directoryMenuItem));
-
-                if (!directoryMenuItems.ContainsKey(directory))
+                DirectoryInfo info = new DirectoryInfo(scriptPath);
+                if (info.Exists)
                 {
-                    directoryMenuItems.Add(directory, directoryMenuItem);
+                    var rootNode = new MenuItem
+                    {
+                        Header = info.Name,
+                        Icon = new PackIconMaterial
+                        {
+                            Kind = PackIconMaterialKind.Folder
+                        },
+                        Tag = info
+                    };
+                    GetFiles(info, rootNode);
+                    GetDirectories(info.GetDirectories(), rootNode);
+                    contextMenu.Items.Add(rootNode);
                 }
-
-                var fileMenuItem = new MenuItem
-                                   {
-                                       Header = file,
-                                       Icon = new PackIconMaterial
-                                              {
-                                                  Kind = PackIconMaterialKind.Script
-                                              },
-                                       StaysOpenOnClick = false
-                                   };
-                fileMenuItem.Click += (sender, args) => _executePowerShellScript.RunFor(fileInfo);
-
-                directoryMenuItem.Items.Add(fileMenuItem);
             }
 
-            directoryMenuItems.Values.Where(x => x.Parent == null).ToList().ForEach(item => contextMenu.Items.Add(item));
-
             var restoreApplication = new MenuItem
-                                     {
-                                         Header = "Restore application",
-                                         Icon = new PackIconMaterial
-                                                {
-                                                    Kind = PackIconMaterialKind.WindowRestore
-                                                }
-                                     };
+            {
+                Header = "Restore application",
+                Icon = new PackIconMaterial
+                {
+                    Kind = PackIconMaterialKind.WindowRestore
+                }
+            };
             restoreApplication.Click += ContextMenuItemRestoreClick;
 
             var closeApplication = new MenuItem
-                                   {
-                                       Header = "Close application",
-                                       Icon = new PackIconMaterial
-                                              {
-                                                  Kind = PackIconMaterialKind.Power
-                                              }
-                                   };
+            {
+                Header = "Close application",
+                Icon = new PackIconMaterial
+                {
+                    Kind = PackIconMaterialKind.Power
+                }
+            };
             closeApplication.Click += ContextMenuItemCloseClick;
 
             contextMenu.Items.Add(new Separator());
@@ -129,6 +110,52 @@ namespace PowerShellRunner.Gui.Internal
             contextMenu.Items.Add(closeApplication);
 
             return contextMenu;
+        }
+
+        private void GetDirectories(IEnumerable<DirectoryInfo> subDirs, ItemsControl nodeToAddTo)
+        {
+            foreach (var subDir in subDirs.Where(dir => !dir.Name.In("packages", "Modules")))
+            {
+                var aNode = new MenuItem
+                {
+                    Header = subDir.Name,
+                    Icon = new PackIconMaterial
+                    {
+                        Kind = PackIconMaterialKind.Folder
+                    },
+                    Tag = subDir
+                };
+
+                var subSubDirs = subDir.GetDirectories();
+                if (subSubDirs.Length != 0)
+                {
+                    GetDirectories(subSubDirs, aNode);
+                }
+
+                GetFiles(subDir, aNode);
+                if (aNode.HasItems)
+                {
+                    nodeToAddTo.Items.Add(aNode);
+                }
+            }
+        }
+
+        private void GetFiles(DirectoryInfo directoryInfo, ItemsControl nodeToAddTo)
+        {
+            foreach (var fileInfo in directoryInfo.GetFiles("*.ps1"))
+            {
+                var fNode = new MenuItem
+                {
+                    Header = fileInfo.Name,
+                    Icon = new PackIconMaterial
+                    {
+                        Kind = PackIconMaterialKind.Script
+                    },
+                    Tag = fileInfo
+                };
+                fNode.Click += (sender, args) => _executePowerShellScript.RunFor(fileInfo);
+                nodeToAddTo.Items.Add(fNode);
+            }
         }
 
         private void ContextMenuItemCloseClick(object sender, EventArgs e)
