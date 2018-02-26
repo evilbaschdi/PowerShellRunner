@@ -20,7 +20,7 @@ namespace PowerShellRunner.Core
                               StartInfo =
                               {
                                   FileName = @"C:\windows\system32\windowspowershell\v1.0\powershell.exe",
-                                  Arguments = script.FullName
+                                  Arguments = "-executionpolicy unrestricted " + script.FullName
                               },
 
                               EnableRaisingEvents = true
