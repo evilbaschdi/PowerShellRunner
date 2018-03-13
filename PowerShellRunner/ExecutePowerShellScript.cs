@@ -10,8 +10,6 @@ namespace PowerShellRunner.Core
         /// <inheritdoc />
         public async void RunFor(FileInfo script)
         {
-            //await RunDiceAsync(@"C:\windows\system32\windowspowershell\v1.0\powershell.exe ", Path.Combine(script.Key, script.Value)).ConfigureAwait(true);
-
             // there is no non-generic TaskCompletionSource
             var tcs = new TaskCompletionSource<bool>();
 
@@ -20,7 +18,7 @@ namespace PowerShellRunner.Core
                               StartInfo =
                               {
                                   FileName = @"C:\windows\system32\windowspowershell\v1.0\powershell.exe",
-                                  Arguments = "-executionpolicy unrestricted " + script.FullName
+                                  Arguments = $"-executionpolicy unrestricted {script.FullName}"
                               },
 
                               EnableRaisingEvents = true
