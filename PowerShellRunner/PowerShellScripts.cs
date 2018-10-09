@@ -14,7 +14,8 @@ namespace PowerShellRunner.Core
 
         public PowerShellScripts(IPowerShellScriptsRaw powerShellScriptsRaw)
         {
-            _powerShellScriptsRaw = powerShellScriptsRaw ?? throw new ArgumentNullException(nameof(powerShellScriptsRaw));
+            _powerShellScriptsRaw =
+                powerShellScriptsRaw ?? throw new ArgumentNullException(nameof(powerShellScriptsRaw));
         }
 
         public List<FileInfo> Value

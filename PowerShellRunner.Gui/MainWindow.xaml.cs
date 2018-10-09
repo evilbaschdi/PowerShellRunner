@@ -7,6 +7,7 @@ namespace PowerShellRunner.Gui
     /// <summary>
     ///     Interaction logic for MainWindow.xaml
     /// </summary>
+    // ReSharper disable once RedundantExtendsListEntry
     public partial class MainWindow : MetroWindow
     {
         /// <summary>
@@ -22,9 +23,10 @@ namespace PowerShellRunner.Gui
         {
             IScriptPaths scriptPaths = new ScriptPaths();
             IExecutePowerShellScript executePowerShellScript = new ExecutePowerShellScript();
-            ITaskbarIconConfiguration taskbarIconConfiguration = new TaskbarIconConfiguration(this, PowerShellRunnerTaskbarIcon, executePowerShellScript, scriptPaths);
-            taskbarIconConfiguration.StartMinimized();
-            taskbarIconConfiguration.Run();
+            ITaskBarIconConfiguration taskBarIconConfiguration =
+                new TaskBarIconConfiguration(this, PowerShellRunnerTaskBarIcon, executePowerShellScript, scriptPaths);
+            taskBarIconConfiguration.StartMinimized();
+            taskBarIconConfiguration.Run();
 
             //MessageBox.Show(stringBuilder.ToString());
         }

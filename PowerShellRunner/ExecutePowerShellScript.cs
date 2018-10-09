@@ -14,21 +14,21 @@ namespace PowerShellRunner.Core
             var tcs = new TaskCompletionSource<bool>();
 
             var process = new Process
-                          {
-                              StartInfo =
-                              {
-                                  FileName = @"C:\windows\system32\windowspowershell\v1.0\powershell.exe",
-                                  Arguments = $"-executionpolicy unrestricted {script.FullName}"
-                              },
+            {
+                StartInfo =
+                {
+                    FileName = @"C:\windows\system32\windowspowershell\v1.0\powershell.exe",
+                    Arguments = $"-executionpolicy unrestricted {script.FullName}"
+                },
 
-                              EnableRaisingEvents = true
-                          };
+                EnableRaisingEvents = true
+            };
 
             process.Exited += (sender, args) =>
-                              {
-                                  tcs.SetResult(true);
-                                  process.Dispose();
-                              };
+            {
+                tcs.SetResult(true);
+                process.Dispose();
+            };
 
             process.Start();
 

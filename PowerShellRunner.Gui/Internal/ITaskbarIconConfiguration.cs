@@ -3,7 +3,7 @@
 namespace PowerShellRunner.Gui.Internal
 {
     /// <inheritdoc />
-    public interface ITaskbarIconConfiguration : IRun
+    public interface ITaskBarIconConfiguration : IRun
     {
         /// <summary>
         /// </summary>

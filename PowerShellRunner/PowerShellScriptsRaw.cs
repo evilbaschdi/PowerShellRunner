@@ -24,14 +24,15 @@ namespace PowerShellRunner.Core
                 foreach (var scriptPath in _scriptPaths.Value)
                 {
                     var filePathDirectoryLists = new FileListFromPathFilter
-                                                 {
-                                                     FilterExtensionsToEqual = new List<string> { "ps1" },
-                                                     FilterFilePathsNotToEqual = new List<string>
-                                                                                 {
-                                                                                     @"modules\pswindowsupdate",
-                                                                                     "packages"
-                                                                                 }
-                                                 };
+                    {
+                        FilterExtensionsToEqual = new List<string> {"ps1"},
+                        FilterFilePathsNotToEqual = new List<string>
+                        {
+                            // ReSharper disable once StringLiteralTypo
+                            @"modules\pswindowsupdate",
+                            "packages"
+                        }
+                    };
                     fileList.AddRange(_fileListFromPath.ValueFor(scriptPath, filePathDirectoryLists));
                 }
 
