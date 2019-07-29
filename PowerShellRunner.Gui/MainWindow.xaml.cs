@@ -1,4 +1,5 @@
-﻿using MahApps.Metro.Controls;
+﻿using EvilBaschdi.CoreExtended.Metro;
+using MahApps.Metro.Controls;
 using PowerShellRunner.Core;
 using PowerShellRunner.Gui.Internal;
 
@@ -21,6 +22,10 @@ namespace PowerShellRunner.Gui
 
         private void Load()
         {
+            var themeManagerHelper = new ThemeManagerHelper();
+            var applicationStyle = new ApplicationStyle(themeManagerHelper);
+            applicationStyle.Load();
+
             IScriptPaths scriptPaths = new ScriptPaths();
             IExecutePowerShellScript executePowerShellScript = new ExecutePowerShellScript();
             ITaskBarIconConfiguration taskBarIconConfiguration =
