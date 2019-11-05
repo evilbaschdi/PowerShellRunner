@@ -2,15 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>$([System.DateTime]::UtcNow.AddHours(2).ToString(yyyy.M.d.Hmm))-develop</Version>
+    <Version>$([System.DateTime]::UtcNow.ToString(yyyy.M.d.Hmm))-develop</Version>
     <Authors>Sebastian Walter</Authors>
     <Company>evilbaschdi</Company>
     <Copyright>Copyright © 2018 - $([System.DateTime]::UtcNow.ToString(yyyy)) evilbaschdi</Copyright>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EvilBaschdi.Core" Version="2019.7.27.1257-develop" />
+    <PackageReference Include="EvilBaschdi.Core" Version="2019.10.10.1115-develop" />
   </ItemGroup>
 
 </Project>

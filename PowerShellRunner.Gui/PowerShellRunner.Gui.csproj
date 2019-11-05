@@ -6,20 +6,19 @@
     <TargetFramework>net48</TargetFramework>
     <UseWPF>true</UseWPF>
     <Prefer32Bit>false</Prefer32Bit>
-    <Version>$([System.DateTime]::UtcNow.AddHours(2).ToString(yyyy.M.d.Hmm))-develop</Version>
+    <Version>$([System.DateTime]::UtcNow.ToString(yyyy.M.d.Hmm))-develop</Version>
     <Authors>Sebastian Walter</Authors>
     <Company>evilbaschdi</Company>
     <Copyright>Copyright © 2018 - $([System.DateTime]::UtcNow.ToString(yyyy)) evilbaschdi</Copyright>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>8.0</LangVersion>
     <ApplicationIcon>psr.ico</ApplicationIcon>
-    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="ControlzEx" Version="4.0.1" />
-    <PackageReference Include="EvilBaschdi.Core" Version="2019.7.27.1257-develop" />
-    <PackageReference Include="EvilBaschdi.CoreExtended" Version="2019.7.27.1312-develop" />
-    <PackageReference Include="MahApps.Metro" Version="2.0.0-alpha0455" />
-    <PackageReference Include="MahApps.Metro.IconPacks" Version="3.0.0-alpha0189" />
+    <PackageReference Include="ControlzEx" Version="4.1.1" />
+    <PackageReference Include="EvilBaschdi.Core" Version="2019.10.10.1115-develop" />
+    <PackageReference Include="EvilBaschdi.CoreExtended" Version="2019.10.21.1930-develop" />
+    <PackageReference Include="MahApps.Metro" Version="2.0.0-alpha0531" />
+    <PackageReference Include="MahApps.Metro.IconPacks" Version="3.0.0-alpha0258" />
     <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.0.8" />
   </ItemGroup>
   <ItemGroup>
