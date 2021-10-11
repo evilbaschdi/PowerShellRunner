@@ -1,11 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2024
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerShellRunner.Core", "PowerShellRunner\PowerShellRunner.Core.csproj", "{D2BB367B-1632-466D-B090-9B1F79FF2D55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowerShellRunner.Core", "PowerShellRunner\PowerShellRunner.Core.csproj", "{D2BB367B-1632-466D-B090-9B1F79FF2D55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerShellRunner.Gui", "PowerShellRunner.Gui\PowerShellRunner.Gui.csproj", "{38928A60-34A9-4B50-8732-B05EDD51D179}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowerShellRunner.Gui", "PowerShellRunner.Gui\PowerShellRunner.Gui.csproj", "{38928A60-34A9-4B50-8732-B05EDD51D179}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B73296F6-6630-4DA3-813F-B34FCDEEB6BE}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		global.json = global.json
+		NuGet.config = NuGet.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

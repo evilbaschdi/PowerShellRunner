@@ -1,4 +1,4 @@
-﻿using EvilBaschdi.CoreExtended.Metro;
+﻿using EvilBaschdi.CoreExtended;
 using MahApps.Metro.Controls;
 using PowerShellRunner.Core;
 using PowerShellRunner.Gui.Internal;
@@ -22,9 +22,9 @@ namespace PowerShellRunner.Gui
 
         private void Load()
         {
-            var themeManagerHelper = new ThemeManagerHelper();
-            var applicationStyle = new ApplicationStyle(themeManagerHelper);
-            applicationStyle.Load();
+            IRoundCorners roundCorners = new RoundCorners();
+            IApplicationStyle style = new ApplicationStyle(roundCorners, true, true);
+            style.Run();
 
             IScriptPaths scriptPaths = new ScriptPaths();
             IExecutePowerShellScript executePowerShellScript = new ExecutePowerShellScript();

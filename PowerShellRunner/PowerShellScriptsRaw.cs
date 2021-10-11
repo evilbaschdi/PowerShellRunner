@@ -5,6 +5,7 @@ using EvilBaschdi.Core.Model;
 
 namespace PowerShellRunner.Core
 {
+    // ReSharper disable once UnusedType.Global
     public class PowerShellScriptsRaw : IPowerShellScriptsRaw
     {
         private readonly IFileListFromPath _fileListFromPath;
@@ -24,15 +25,16 @@ namespace PowerShellRunner.Core
                 foreach (var scriptPath in _scriptPaths.Value)
                 {
                     var filePathDirectoryLists = new FileListFromPathFilter
-                    {
-                        FilterExtensionsToEqual = new List<string> {"ps1"},
-                        FilterFilePathsNotToEqual = new List<string>
-                        {
-                            // ReSharper disable once StringLiteralTypo
-                            @"modules\pswindowsupdate",
-                            "packages"
-                        }
-                    };
+                                                 {
+                                                     FilterExtensionsToEqual = new()
+                                                                               { "ps1" },
+                                                     FilterFilePathsNotToEqual = new()
+                                                                                 {
+                                                                                     // ReSharper disable once StringLiteralTypo
+                                                                                     @"modules\pswindowsupdate",
+                                                                                     "packages"
+                                                                                 }
+                                                 };
                     fileList.AddRange(_fileListFromPath.ValueFor(scriptPath, filePathDirectoryLists));
                 }
 

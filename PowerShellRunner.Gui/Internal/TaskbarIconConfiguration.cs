@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using EvilBaschdi.Core.Extensions;
 using Hardcodet.Wpf.TaskbarNotification;
 using MahApps.Metro.IconPacks;
 using PowerShellRunner.Core;
@@ -114,7 +113,7 @@ namespace PowerShellRunner.Gui.Internal
 
         private void GetDirectories(IEnumerable<DirectoryInfo> subDirs, ItemsControl nodeToAddTo)
         {
-            foreach (var subDir in subDirs.Where(dir => !dir.Name.In("packages", "Modules")))
+            foreach (var subDir in subDirs.Where(dir => !dir.Name.Equals("packages") || !dir.Name.Equals("Modules")))
             {
                 var aNode = new MenuItem
                             {
@@ -153,7 +152,7 @@ namespace PowerShellRunner.Gui.Internal
                                        },
                                 Tag = fileInfo
                             };
-                fNode.Click += (sender, args) => _executePowerShellScript.RunFor(fileInfo);
+                fNode.Click += (_, _) => _executePowerShellScript.RunFor(fileInfo);
                 nodeToAddTo.Items.Add(fNode);
             }
         }

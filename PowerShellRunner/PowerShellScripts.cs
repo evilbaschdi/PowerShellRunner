@@ -8,6 +8,7 @@ using EvilBaschdi.Core.Extensions;
 
 namespace PowerShellRunner.Core
 {
+    // ReSharper disable once UnusedType.Global
     public class PowerShellScripts : IPowerShellScripts
     {
         private readonly IPowerShellScriptsRaw _powerShellScriptsRaw;
