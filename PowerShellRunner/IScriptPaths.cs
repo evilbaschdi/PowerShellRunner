@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using EvilBaschdi.Core;
+﻿using EvilBaschdi.Core;
 
-namespace PowerShellRunner.Core
+namespace PowerShellRunner.Core;
+
+public interface IScriptPaths : IValueOfList<string>
 {
-    public interface IScriptPaths : IValue<List<string>>
-    {
-    }
 }

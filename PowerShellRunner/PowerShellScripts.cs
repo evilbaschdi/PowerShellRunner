@@ -1,34 +1,28 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Concurrent;
 using EvilBaschdi.Core.Extensions;
 
-namespace PowerShellRunner.Core
+namespace PowerShellRunner.Core;
+
+// ReSharper disable once UnusedType.Global
+public class PowerShellScripts : IPowerShellScripts
 {
-    // ReSharper disable once UnusedType.Global
-    public class PowerShellScripts : IPowerShellScripts
+    private readonly IPowerShellScriptsRaw _powerShellScriptsRaw;
+
+    public PowerShellScripts(IPowerShellScriptsRaw powerShellScriptsRaw)
     {
-        private readonly IPowerShellScriptsRaw _powerShellScriptsRaw;
+        _powerShellScriptsRaw =
+            powerShellScriptsRaw ?? throw new ArgumentNullException(nameof(powerShellScriptsRaw));
+    }
 
-        public PowerShellScripts(IPowerShellScriptsRaw powerShellScriptsRaw)
+    public List<FileInfo> Value
+    {
+        get
         {
-            _powerShellScriptsRaw =
-                powerShellScriptsRaw ?? throw new ArgumentNullException(nameof(powerShellScriptsRaw));
-        }
+            var powerShellScripts = new ConcurrentBag<FileInfo>();
 
-        public List<FileInfo> Value
-        {
-            get
-            {
-                var powerShellScripts = new ConcurrentBag<FileInfo>();
-
-                Parallel.ForEach(_powerShellScriptsRaw.Value,
-                    path => { powerShellScripts.Add(path.FileInfo()); });
-                return powerShellScripts.ToList();
-            }
+            Parallel.ForEach(_powerShellScriptsRaw.Value,
+                path => { powerShellScripts.Add(path.FileInfo()); });
+            return powerShellScripts.ToList();
         }
     }
 }

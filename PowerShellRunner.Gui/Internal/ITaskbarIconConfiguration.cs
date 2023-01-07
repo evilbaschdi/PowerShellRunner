@@ -1,12 +1,11 @@
 ﻿using EvilBaschdi.Core;
 
-namespace PowerShellRunner.Gui.Internal
+namespace PowerShellRunner.Gui.Internal;
+
+/// <inheritdoc />
+public interface ITaskBarIconConfiguration : IRun
 {
-    /// <inheritdoc />
-    public interface ITaskBarIconConfiguration : IRun
-    {
-        /// <summary>
-        /// </summary>
-        void StartMinimized();
-    }
+    /// <summary>
+    /// </summary>
+    void StartMinimized();
 }

@@ -1,9 +1,7 @@
-﻿using System.IO;
-using EvilBaschdi.Core;
+﻿using EvilBaschdi.Core;
 
-namespace PowerShellRunner.Core
+namespace PowerShellRunner.Core;
+
+public interface IExecutePowerShellScript : IRunFor<FileInfo>
 {
-    public interface IExecutePowerShellScript : IRunFor<FileInfo>
-    {
-    }
 }

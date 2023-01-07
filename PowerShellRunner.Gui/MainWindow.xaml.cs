@@ -3,37 +3,35 @@ using MahApps.Metro.Controls;
 using PowerShellRunner.Core;
 using PowerShellRunner.Gui.Internal;
 
-namespace PowerShellRunner.Gui
+namespace PowerShellRunner.Gui;
+
+/// <summary>
+///     Interaction logic for MainWindow.xaml
+/// </summary>
+// ReSharper disable once RedundantExtendsListEntry
+public partial class MainWindow : MetroWindow
 {
     /// <summary>
-    ///     Interaction logic for MainWindow.xaml
+    ///     Constructor
     /// </summary>
-    // ReSharper disable once RedundantExtendsListEntry
-    public partial class MainWindow : MetroWindow
+    public MainWindow()
     {
-        /// <summary>
-        ///     Constructor
-        /// </summary>
-        public MainWindow()
-        {
-            InitializeComponent();
-            Load();
-        }
+        InitializeComponent();
+        Load();
+    }
 
-        private void Load()
-        {
-            IRoundCorners roundCorners = new RoundCorners();
-            IApplicationStyle style = new ApplicationStyle(roundCorners, true, true);
-            style.Run();
+    private void Load()
+    {
+        IApplicationStyle style = new ApplicationStyle(true, true);
+        style.Run();
 
-            IScriptPaths scriptPaths = new ScriptPaths();
-            IExecutePowerShellScript executePowerShellScript = new ExecutePowerShellScript();
-            ITaskBarIconConfiguration taskBarIconConfiguration =
-                new TaskBarIconConfiguration(this, PowerShellRunnerTaskBarIcon, executePowerShellScript, scriptPaths);
-            taskBarIconConfiguration.StartMinimized();
-            taskBarIconConfiguration.Run();
+        IScriptPaths scriptPaths = new ScriptPaths();
+        IExecutePowerShellScript executePowerShellScript = new ExecutePowerShellScript();
+        ITaskBarIconConfiguration taskBarIconConfiguration =
+            new TaskBarIconConfiguration(this, PowerShellRunnerTaskBarIcon, executePowerShellScript, scriptPaths);
+        taskBarIconConfiguration.StartMinimized();
+        taskBarIconConfiguration.Run();
 
-            //MessageBox.Show(stringBuilder.ToString());
-        }
+        //MessageBox.Show(stringBuilder.ToString());
     }
 }

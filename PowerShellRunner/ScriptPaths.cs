@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
+﻿namespace PowerShellRunner.Core;
 
-namespace PowerShellRunner.Core
+public class ScriptPaths : IScriptPaths
 {
-    public class ScriptPaths : IScriptPaths
-    {
-        public List<string> Value => new()
-                                     { @"C:\Git" };
-    }
+    public List<string> Value => new()
+                                 { @"C:\Git" };
 }
