@@ -1,4 +1,4 @@
-﻿using EvilBaschdi.CoreExtended;
+﻿using EvilBaschdi.Core.Wpf;
 using MahApps.Metro.Controls;
 using PowerShellRunner.Core;
 using PowerShellRunner.Gui.Internal;
