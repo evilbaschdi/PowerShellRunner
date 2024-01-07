@@ -26,7 +26,8 @@ public class TaskBarIconConfiguration : ITaskBarIconConfiguration
     ///     <paramref name="mainWindow" /> is <see langword="null" />.
     ///     <paramref name="taskBarIcon" /> is <see langword="null" />.
     /// </exception>
-    public TaskBarIconConfiguration(MainWindow mainWindow, TaskbarIcon taskBarIcon,
+    public TaskBarIconConfiguration(MainWindow mainWindow,
+                                    TaskbarIcon taskBarIcon,
                                     IExecutePowerShellScript executePowerShellScript,
                                     IScriptPaths scriptPaths)
     {

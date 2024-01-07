@@ -1,53 +1,46 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows</TargetFramework>
-    <UseWPF>true</UseWPF>
-    <Prefer32Bit>false</Prefer32Bit>
-    <Version>$([System.DateTime]::UtcNow.ToString(yyyy.M.d.Hmm))</Version>
-    <Authors>Sebastian Walter</Authors>
-    <Company>evilbaschdi</Company>
-    <Copyright>Copyright © 2018 - $([System.DateTime]::UtcNow.ToString(yyyy)) evilbaschdi</Copyright>
-    <LangVersion>preview</LangVersion>
-    <ApplicationIcon>psr.ico</ApplicationIcon>
-	  <EnableNETAnalyzers>true</EnableNETAnalyzers>
-	  <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="EvilBaschdi.Core.Wpf" Version="2023.2.20.2127-develop" />
-    <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
-    <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />
-    <PackageReference Include="System.Drawing.Common" Version="8.0.0-preview.1.23110.8" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.SourceLink.AzureRepos.Git" Version="1.1.1">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="WpfAnalyzers" Version="4.1.1">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Folders2Hash\RegisterFileTypes\RegisterFileTypes.csproj" />
-    <ProjectReference Include="..\PowerShellRunner\PowerShellRunner.Core.csproj" />
-    <Resource Include="psr.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Update="Properties\Settings.Designer.cs">
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<Prefer32Bit>false</Prefer32Bit>
+		<Version>$([System.DateTime]::UtcNow.ToString(yyyy.M.d.Hmm))</Version>
+		<Authors>Sebastian Walter</Authors>
+		<Company>evilbaschdi</Company>
+		<Copyright>Copyright © 2018 - $([System.DateTime]::UtcNow.ToString(yyyy)) evilbaschdi</Copyright>
+		<LangVersion>preview</LangVersion>
+		<ApplicationIcon>psr.ico</ApplicationIcon>
+		<EnableNETAnalyzers>true</EnableNETAnalyzers>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="EvilBaschdi.Core.Wpf" />
+		<PackageReference Include="MahApps.Metro.IconPacks.Material" />
+		<PackageReference Include="Hardcodet.NotifyIcon.Wpf" />
+		<PackageReference Include="System.Drawing.Common" />
+		<PackageReference Include="WpfAnalyzers">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Folders2Hash\RegisterFileTypes\RegisterFileTypes.csproj" />
+		<ProjectReference Include="..\PowerShellRunner.COre\PowerShellRunner.Core.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="psr.ico" />
+		<Compile Update="Properties\Settings.Designer.cs">
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Settings.settings</DependentUpon>
+		</Compile>
+		<None Update="Properties\Settings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
+		</None>
+	</ItemGroup>
 
 </Project>

@@ -22,8 +22,10 @@ public partial class MainWindow : MetroWindow
 
     private void Load()
     {
-        IApplicationStyle style = new ApplicationStyle(true, true);
-        style.Run();
+        IApplicationStyle applicationStyle = new ApplicationStyle();
+        IApplicationLayout applicationLayout = new ApplicationLayout();
+        applicationStyle.Run();
+        applicationLayout.RunFor((true, true));
 
         IScriptPaths scriptPaths = new ScriptPaths();
         IExecutePowerShellScript executePowerShellScript = new ExecutePowerShellScript();
