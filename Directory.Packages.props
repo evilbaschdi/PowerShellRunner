@@ -4,8 +4,8 @@
     <CentralPackageTransitivePinningEnabled>false</CentralPackageTransitivePinningEnabled>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="EvilBaschdi.Core" Version="2023.11.8.1715-develop" />
-    <PackageVersion Include="EvilBaschdi.Core.Wpf" Version="2023.12.10.835-develop" />
+    <PackageVersion Include="EvilBaschdi.Core" Version="2024.1.6.1043-develop" />
+    <PackageVersion Include="EvilBaschdi.Core.Wpf" Version="2024.1.6.1116-develop" />
     <PackageVersion Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />
     <PackageVersion Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
     <PackageVersion Include="System.Drawing.Common" Version="8.0.0" />
