@@ -2,6 +2,4 @@
 
 namespace PowerShellRunner.Core;
 
-public interface IScriptPaths : IValueOfList<string>
-{
-}
+public interface IScriptPaths : IListOf<string>;

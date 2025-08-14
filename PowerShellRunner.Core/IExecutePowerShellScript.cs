@@ -2,6 +2,4 @@
 
 namespace PowerShellRunner.Core;
 
-public interface IExecutePowerShellScript : IRunFor<FileInfo>
-{
-}
+public interface IExecutePowerShellScript : IRunFor<FileInfo>;

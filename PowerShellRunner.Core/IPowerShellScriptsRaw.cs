@@ -2,6 +2,4 @@
 
 namespace PowerShellRunner.Core;
 
-public interface IPowerShellScriptsRaw : IValueOfList<string>
-{
-}
+public interface IPowerShellScriptsRaw : IListOf<string>;

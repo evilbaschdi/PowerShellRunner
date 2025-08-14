@@ -2,6 +2,4 @@
 
 namespace PowerShellRunner.Core;
 
-public interface IPowerShellScripts : IValueOfList<FileInfo>
-{
-}
+public interface IPowerShellScripts : IListOf<FileInfo>;
