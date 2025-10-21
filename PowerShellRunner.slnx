@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitattributes" />
+    <File Path=".gitignore" />
+    <File Path="global.json" />
+    <File Path="NuGet.config" />
+  </Folder>
+  <Project Path="PowerShellRunner.Core/PowerShellRunner.Core.csproj" />
+  <Project Path="PowerShellRunner.Gui/PowerShellRunner.Gui.csproj" />
+</Solution>
