@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>net9.0-windows</TargetFramework>
+		<TargetFramework>net10.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
 		<Prefer32Bit>false</Prefer32Bit>
 		<Version>$([System.DateTime]::UtcNow.ToString(yyyy.M.d.H))</Version>
@@ -19,11 +19,6 @@
 		<PackageReference Include="EvilBaschdi.Core.Wpf" />
 		<PackageReference Include="MahApps.Metro.IconPacks.Material" />
 		<PackageReference Include="Hardcodet.NotifyIcon.Wpf" />
-		<PackageReference Include="System.Drawing.Common" />
-		<PackageReference Include="WpfAnalyzers">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-		</PackageReference>
 	</ItemGroup>
 
 	<ItemGroup>
