@@ -2,9 +2,14 @@
   <Folder Name="/Solution Items/">
     <File Path=".gitattributes" />
     <File Path=".gitignore" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Build.targets" />
+    <File Path="Directory.Packages.props" />
     <File Path="global.json" />
     <File Path="NuGet.config" />
   </Folder>
-  <Project Path="PowerShellRunner.Core/PowerShellRunner.Core.csproj" />
-  <Project Path="PowerShellRunner.Gui/PowerShellRunner.Gui.csproj" />
+  <Folder Name="/src/">
+    <Project Path="src/PowerShellRunner.Core/PowerShellRunner.Core.csproj" />
+    <Project Path="src/PowerShellRunner.Gui/PowerShellRunner.Gui.csproj" />
+  </Folder>
 </Solution>

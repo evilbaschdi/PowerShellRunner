@@ -1,0 +1,34 @@
+<Project>
+
+	<PropertyGroup>
+		<Authors>Sebastian Walter</Authors>
+		<Company>evilbaschdi (Sebastian Walter)</Company>
+		<Copyright>Copyright © 2018 - $([System.DateTime]::UtcNow.ToString(yyyy)) evilbaschdi</Copyright>
+		<!-- ReSharper disable once UnknownProperty -->
+		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(MSBuildProjectName).xml</DocumentationFile>
+		<!-- ReSharper disable once UnknownProperty -->
+		<EnableNETAnalyzers>true</EnableNETAnalyzers>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<LangVersion>preview</LangVersion>
+		<Nullable>disable</Nullable>
+		<PackageProjectUrl>https://github.com/evilbaschdi/DisplayRotation</PackageProjectUrl>
+		<Product>DisplayRotation</Product>
+		<PublishSingleFile>true</PublishSingleFile>
+		<RepositoryUrl>https://github.com/evilbaschdi/DisplayRotation</RepositoryUrl>
+		<SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
+		<Version>$([System.DateTime]::UtcNow.ToString(yyyy.M.d.Hmm))</Version>
+		<TargetFramework>net10.0</TargetFramework>
+	</PropertyGroup>
+
+	<!-- ReSharper disable once UnknownProperty -->
+	<ItemGroup>
+		<Using Include="EvilBaschdi.Core" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="EvilBaschdi.Core" />
+		<PackageReference Include="EvilBaschdi.Core.Avalonia" />
+		<PackageReference Include="EvilBaschdi.Core.DependencyInjection" />
+	</ItemGroup>
+
+</Project>

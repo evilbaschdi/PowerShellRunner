@@ -1,0 +1,20 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="PowerShellRunner.Gui.App"
+             Name="PowerShellRunner">
+    <Application.Styles>
+        <FluentTheme />
+    </Application.Styles>
+
+    <TrayIcon.Icons>
+        <TrayIcons>
+            <TrayIcon Icon="/psr.ico" ToolTipText="Run PowerShell Script">
+                <TrayIcon.Menu>
+                    <NativeMenu>
+                        <NativeMenuItem Header="⏻ Close application" Click="TrayIconMenuItemExitOnClick" />
+                    </NativeMenu>
+                </TrayIcon.Menu>
+            </TrayIcon>
+        </TrayIcons>
+    </TrayIcon.Icons>
+</Application>

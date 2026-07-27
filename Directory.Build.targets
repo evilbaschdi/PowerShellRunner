@@ -1,0 +1,57 @@
+<Project>
+
+	<ItemGroup>
+		<Compile Remove="TestResults\**" />
+		<EmbeddedResource Remove="TestResults\**" />
+		<None Remove="TestResults\**" />
+	</ItemGroup>
+
+	<Choose>
+		<!-- Core production project -->
+		<When Condition="$(MSBuildProjectName) == 'VmMachineHwVersionUpdater.Core'">
+			<ItemGroup>
+				<Compile Update="**\*.cs">
+					<DependentUpon>$([System.String]::Copy(I%(Filename).cs).Replace('Cached',''))</DependentUpon>
+				</Compile>
+
+				<None Update="Settings\GuestOsStringMapping.json">
+					<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+					<DependentUpon>IGuestOsStringMapping.cs</DependentUpon>
+				</None>
+
+				<None Update="Settings\VmPools.json">
+					<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+					<DependentUpon>IVmPools.cs</DependentUpon>
+				</None>
+			</ItemGroup>
+		</When>
+		<!-- Core test project -->
+		<When Condition="$(MSBuildProjectName) == 'VmMachineHwVersionUpdater.Core.Tests'">
+			<ItemGroup>
+				<None Include="..\..\src\VmMachineHwVersionUpdater.Core\Settings\GuestOsStringMapping.json">
+					<Link>Settings\GuestOsStringMapping.json</Link>
+					<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+					<DependentUpon>GuestOsStringMappingTests.cs</DependentUpon>
+				</None>
+
+				<None Include="..\..\src\VmMachineHwVersionUpdater.Core\Settings\VmPools.json">
+					<Link>Settings\VmPools.json</Link>
+					<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+					<DependentUpon>VmPoolsTests.cs</DependentUpon>
+				</None>
+			</ItemGroup>
+		</When>
+		<!-- Avalonia production project -->
+		<When Condition="$(MSBuildProjectName) == 'VmMachineHwVersionUpdater.Avalonia'">
+			<ItemGroup>
+				<Compile Update="ViewModels\*.cs">
+					<DependentUpon>$([System.String]::Copy(I%(Filename).cs).Replace('Cached',''))</DependentUpon>
+				</Compile>
+				<Compile Update="ViewModels\*\*.cs">
+					<DependentUpon>$([System.String]::Copy(I%(Filename).cs).Replace('Cached',''))</DependentUpon>
+				</Compile>
+			</ItemGroup>
+		</When>
+	</Choose>
+
+</Project>
