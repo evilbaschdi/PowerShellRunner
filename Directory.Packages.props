@@ -1,12 +1,12 @@
 <Project>
-	<PropertyGroup>
-		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-		<CentralPackageTransitivePinningEnabled>false</CentralPackageTransitivePinningEnabled>
-	</PropertyGroup>
-	<ItemGroup>
-		<PackageVersion Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.3" />
-		<PackageVersion Include="EvilBaschdi.Core" Version="2026.6.18.15" />
-		<PackageVersion Include="EvilBaschdi.Core.Avalonia" Version="2026.7.26.9" />
-		<PackageVersion Include="EvilBaschdi.Core.DependencyInjection" Version="2026.7.14.17" />
-	</ItemGroup>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>false</CentralPackageTransitivePinningEnabled>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.3" />
+    <PackageVersion Include="EvilBaschdi.Core" Version="2026.6.18.15" />
+    <PackageVersion Include="EvilBaschdi.Core.Avalonia" Version="2026.8.3.15" />
+    <PackageVersion Include="EvilBaschdi.Core.DependencyInjection" Version="2026.7.14.17" />
+  </ItemGroup>
 </Project>
