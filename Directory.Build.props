@@ -27,7 +27,6 @@
 
 	<ItemGroup>
 		<PackageReference Include="EvilBaschdi.Core" />
-		<PackageReference Include="EvilBaschdi.Core.Avalonia" />
 		<PackageReference Include="EvilBaschdi.Core.DependencyInjection" />
 	</ItemGroup>
 

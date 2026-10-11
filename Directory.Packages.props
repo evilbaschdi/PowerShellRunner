@@ -5,8 +5,8 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageVersion Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.3" />
-    <PackageVersion Include="EvilBaschdi.Core" Version="2026.6.18.15" />
-    <PackageVersion Include="EvilBaschdi.Core.Avalonia" Version="2026.8.3.15" />
-    <PackageVersion Include="EvilBaschdi.Core.DependencyInjection" Version="2026.7.14.17" />
+    <PackageVersion Include="EvilBaschdi.Core" Version="2026.8.21.10" />
+    <PackageVersion Include="EvilBaschdi.Core.Avalonia" Version="2026.10.9.14" />
+    <PackageVersion Include="EvilBaschdi.Core.DependencyInjection" Version="2026.9.8.21" />
   </ItemGroup>
 </Project>

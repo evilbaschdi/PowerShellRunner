@@ -22,7 +22,7 @@ public class TrayIconMenuUpdater : ITrayIconMenuUpdater
         }
 
         var hasCloseEntry = trayMenu.Items.Any(item => item is NativeMenuItem menuItem
-                                                        && string.Equals(menuItem.Header, CloseApplicationHeader, StringComparison.Ordinal));
+                                                       && string.Equals(menuItem.Header, CloseApplicationHeader, StringComparison.Ordinal));
         if (hasCloseEntry)
         {
             return;
@@ -45,7 +45,7 @@ public class TrayIconMenuUpdater : ITrayIconMenuUpdater
         }
 
         var hasLoadingEntry = trayMenu.Items.Any(item => item is NativeMenuItem menuItem
-                                                          && string.Equals(menuItem.Header, LoadingHeader, StringComparison.Ordinal));
+                                                         && string.Equals(menuItem.Header, LoadingHeader, StringComparison.Ordinal));
         if (hasLoadingEntry)
         {
             return;

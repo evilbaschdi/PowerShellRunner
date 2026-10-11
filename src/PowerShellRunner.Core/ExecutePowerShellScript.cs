@@ -9,6 +9,7 @@ public class ExecutePowerShellScript(
 {
     private readonly IPowerShellExecutableCandidates _powerShellExecutableCandidates =
         powerShellExecutableCandidates ?? throw new ArgumentNullException(nameof(powerShellExecutableCandidates));
+
     private readonly IPowerShellProcessStarter _powerShellProcessStarter =
         powerShellProcessStarter ?? throw new ArgumentNullException(nameof(powerShellProcessStarter));
 

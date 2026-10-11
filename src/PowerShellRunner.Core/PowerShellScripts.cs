@@ -20,7 +20,7 @@ public class PowerShellScripts : IPowerShellScripts
     }
 
     /// <inheritdoc />
-    public List<FileInfo> Value
+    public ConcurrentBag<FileInfo> Value
     {
         get
         {
@@ -28,7 +28,7 @@ public class PowerShellScripts : IPowerShellScripts
 
             Parallel.ForEach(_powerShellScriptsRaw.Value,
                 path => { powerShellScripts.Add(path.FileInfo()); });
-            return [.. powerShellScripts];
+            return powerShellScripts;
         }
     }
 }

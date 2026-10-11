@@ -1,4 +1,4 @@
 namespace PowerShellRunner.Core;
 
 /// <inheritdoc />
-public interface IPowerShellScripts : IListOf<FileInfo>;
+public interface IPowerShellScripts : IConcurrentBagOf<FileInfo>;
